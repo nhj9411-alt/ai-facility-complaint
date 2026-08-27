@@ -109,7 +109,11 @@ def analyze_with_gemini(prompt, uploaded_file=None):
 
             response = client.models.generate_content(
                 model="gemini-3.6-flash",
-                contents=contents
+                contents=contents,
+                config={
+                    "max_output_tokens": 800,
+                    "temperature": 0.3
+                }
             )
 
             if response.text:
