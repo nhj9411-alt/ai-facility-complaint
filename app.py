@@ -326,7 +326,25 @@ if st.button("🤖 AI 초기 대응 안내받기"):
             st.success("AI 분석이 완료되었습니다.")
 
             st.divider()
+        # ==============================================
+        # 첨부 사진
+        # ==============================================
+        if uploaded_file is not None:
 
+            st.subheader("📷 첨부 사진")
+
+            st.image(
+                uploaded_file,
+                caption=f"첨부 사진 - {location}",
+                use_container_width=True
+            )
+
+            st.divider()
+
+
+    # ==============================================
+    # AI 분석 결과
+    # ==============================================
             st.subheader("🤖 AI 분석 결과")
 
             st.markdown(result_data["result"])
