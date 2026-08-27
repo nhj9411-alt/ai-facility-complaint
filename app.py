@@ -111,7 +111,7 @@ def analyze_with_gemini(prompt, uploaded_file=None):
                 model="gemini-3.6-flash",
                 contents=contents,
                 config={
-                    "max_output_tokens": 800,
+                    "max_output_tokens": 2500,
                     "temperature": 0.3
                 }
             )
@@ -307,7 +307,7 @@ if st.button("🤖 AI 초기 대응 안내받기"):
 5. 시설관리 담당자의 현장 확인이 필요하다는 점을 명확히 합니다.
 6. 답변은 실제 현장에서 바로 활용할 수 있도록 명확하고 간결하게 작성합니다.
 7. 각 항목은 핵심 내용 중심으로 작성합니다.
-8. 전체 답변은 800자 내외를 목표로 작성합니다.
+8. 각 항목별로 핵심 내용을 충분히 작성하되, 불필요하게 반복하지 않습니다.
 """
 
         with st.spinner("🤖 AI가 초기 대응 방안을 검토하고 있습니다..."):
