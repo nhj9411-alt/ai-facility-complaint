@@ -310,7 +310,7 @@ if st.button("🤖 AI 초기 대응 안내받기"):
 8. 전체 답변은 800자 내외를 목표로 작성합니다.
 """
 
-        with st.spinner("🤖 AI가 시설 민원을 분석하고 있습니다..."):
+        with st.spinner("🤖 AI가 초기 대응 방안을 검토하고 있습니다..."):
 
             result_data = analyze_with_gemini(
                 prompt,
