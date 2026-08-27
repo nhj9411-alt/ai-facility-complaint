@@ -108,7 +108,7 @@ def analyze_with_gemini(prompt, uploaded_file=None):
                 contents.append(image_part)
 
             response = client.models.generate_content(
-                model="gemini-2.5-flash",
+                model="gemini-3.5-flash",
                 contents=contents
             )
 
