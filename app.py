@@ -111,7 +111,7 @@ def analyze_with_gemini(prompt, uploaded_file=None):
                 model="gemini-3.6-flash",
                 contents=contents,
                 config={
-                    "max_output_tokens": 2500,
+                    "max_output_tokens": 4000,
                     "temperature": 0.3
                 }
             )
