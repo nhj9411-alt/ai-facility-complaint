@@ -281,7 +281,6 @@ if st.button("🤖 AI 초기 대응 안내받기"):
 ## 시설 분야
 - 주관 분야
 - 연계 가능 분야
-- 정확한 원인
 
 정확한 원인은 현장 확인이 필요하다는 점을 명확히 안내합니다.
 
@@ -306,58 +305,46 @@ if st.button("🤖 AI 초기 대응 안내받기"):
 4. 현장에서 직접 분해하거나 전문적인 수리를 시도하도록 안내하지 않습니다.
 5. 시설관리 담당자의 현장 확인이 필요하다는 점을 명확히 합니다.
 6. 답변은 실제 현장에서 바로 활용할 수 있도록 명확하고 간결하게 작성합니다.
-7. 각 항목은 핵심 내용 중심으로 작성합니다.
-8. 각 항목별로 핵심 내용을 충분히 작성하되, 불필요하게 반복하지 않습니다.
 """
 
-        with st.spinner("🤖 AI가 초기 대응 방안을 검토하고 있습니다..."):
+        with st.spinner("🤖 AI가 시설 민원을 분석하고 있습니다..."):
 
             result_data = analyze_with_gemini(
                 prompt,
                 uploaded_file
             )
 
+        # ==============================================
+        # 성공
+        # ==============================================
+        if result_data["success"]:
 
-# ==============================================
-# 성공
-# ==============================================
-if result_data["success"]:
+            st.success("AI 분석이 완료되었습니다.")
 
-    st.success("AI 분석이 완료되었습니다.")
+            # 사진 첨부한 경우 결과에 표시
+            if uploaded_file is not None:
 
-    st.divider()
+                st.subheader("📷 첨부 사진")
 
-    # ==============================================
-    # 첨부 사진
-    # ==============================================
-    if uploaded_file is not None:
+                st.image(
+                    uploaded_file,
+                    use_container_width=True
+                )
 
-        st.subheader("📷 첨부 사진")
+            st.divider()
 
-        st.image(
-            uploaded_file,
-            caption=f"첨부 사진 - {location}",
-            use_container_width=True
-        )
+            st.subheader("🤖 AI 분석 결과")
 
-        st.divider()
+            st.markdown(result_data["result"])
 
-    # ==============================================
-    # AI 분석 결과
-    # ==============================================
-    st.subheader("🤖 AI 분석 결과")
+        # ==============================================
+        # 실패
+        # ==============================================
+        else:
 
-    st.markdown(result_data["result"])
+            st.warning("⚠️ AI 분석 서비스를 일시적으로 이용할 수 없습니다.")
 
-
-# ==============================================
-# 실패
-# ==============================================
-else:
-
-    st.warning("⚠️ AI 분석 서비스를 일시적으로 이용할 수 없습니다.")
-
-    st.info(result_data["message"])
+            st.info(result_data["message"])
 
     st.error("디버그 정보")
     st.code(str(result_data))
