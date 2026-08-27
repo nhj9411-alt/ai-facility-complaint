@@ -129,21 +129,23 @@ def analyze_with_gemini(prompt, uploaded_file=None):
 
 
         except Exception as e:
+
+            error_message = str(e)
+            
             # ==========================================
             # 429 / API 사용량 한도 초과
             # ==========================================
             if "429" in error_message or "RESOURCE_EXHAUSTED" in error_message:
 
-            return {
-                "success": False,
-                "message": """
+                return {
+                    "success": False,
+                    "message": """
 현재 AI 분석 서비스의 일일 사용 가능 횟수를 모두 사용했습니다.
 
 잠시 후 다시 이용하거나, 관리자에게 API 사용량 한도 확인을 요청해주세요.
 """
     }
-            error_message = str(e)
-
+         
             # ==========================================
             # 503 / 서버 과부하
             # ==========================================
