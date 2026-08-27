@@ -359,8 +359,8 @@ else:
 
     st.info(result_data["message"])
 
-            st.error("디버그 정보")
-            st.code(result_data)
+    st.error("디버그 정보")
+    st.code(str(result_data))
 
 
 # ==================================================
