@@ -330,14 +330,14 @@ if st.button("🤖 AI 초기 대응 분석하기"):
         # ==============================================
         # 실패
         # ==============================================
-      else:
+        else:
 
-    st.warning("⚠️ AI 분석 서비스를 일시적으로 이용할 수 없습니다.")
+            st.warning("⚠️ AI 분석 서비스를 일시적으로 이용할 수 없습니다.")
 
-    st.info(result_data["message"])
+            st.info(result_data["message"])
 
-    st.error("디버그 정보")
-    st.code(result_data)
+            st.error("디버그 정보")
+            st.code(result_data)
 
 
 # ==================================================
